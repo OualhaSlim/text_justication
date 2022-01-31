@@ -65,6 +65,7 @@ router.post('/justify', bodyParser.text({ limit: '50mb' }), async (request,respo
         await dbAPI.updateWordBalance(user, remainingWords - numberOfWords)
         response.end(justifiedText);
     }catch(error){
-        response.end(error.message)
+        console.log(error)
+        response.end("Please enter body in text format")
     }
 });

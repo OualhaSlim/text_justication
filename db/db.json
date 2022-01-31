@@ -8,8 +8,8 @@
     },
     {
       "email": "slim@email.com",
-      "lastUsedDate": "2022-01-31T10:40:24.516Z",
-      "wordBalance": 51230,
+      "lastUsedDate": "2022-01-31T11:00:50.967Z",
+      "wordBalance": 50913,
       "id": 2
     },
     {
@@ -17,6 +17,12 @@
       "lastUsedDate": "2022-01-31T10:12:49.487Z",
       "wordBalance": 80000,
       "id": 3
+    },
+    {
+      "email": "a@a.com",
+      "lastUsedDate": "2022-01-31T10:53:40.034Z",
+      "wordBalance": 80000,
+      "id": 4
     }
   ]
 }
