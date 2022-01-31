@@ -21,7 +21,7 @@ const sameDay = (date1, date2) =>{
 
 const countRemainingWords = (user, maxWords) =>{
   if(sameDay(new Date(), new Date(user.lastUsedDate))){
-      return user.rate
+      return user.wordBalance
   }
   return maxWords
 }

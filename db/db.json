@@ -3,8 +3,20 @@
     {
       "email": "test@test.com",
       "lastUsedDate": "2022-01-30T19:50:21.019Z",
-      "rate": 3915,
+      "wordBalance": 3915,
       "id": 1
+    },
+    {
+      "email": "slim@email.com",
+      "lastUsedDate": "2022-01-31T10:40:24.516Z",
+      "wordBalance": 51230,
+      "id": 2
+    },
+    {
+      "email": "slim2@email.com",
+      "lastUsedDate": "2022-01-31T10:12:49.487Z",
+      "wordBalance": 80000,
+      "id": 3
     }
   ]
 }

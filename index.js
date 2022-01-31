@@ -9,15 +9,26 @@ const { JustifyText } = require('./textJustification')
 const port = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 const maxWords = 80000
 const maxWidth = 80
 
+app.listen(port, () => {
+    console.log("Server listening")
+})
 
-// error not in db 401 (justification with wrong token)
+app.get("/",(request, response) =>{
+    response.end("Text Justification API");
+});
 
-// request token giving specific email
-router.post('/token',async (request,response) => {
+// redirection
+app.get('*', (request, response) =>{
+    response.redirect('/');
+});
+
+// add router in the Express app.
+app.use("/api", router);
+
+router.post('/token', bodyParser.json(),async (request,response) => {
     if(!validateEmail(request.body.email)) return response.status(400).send({ message: 'Invalid email' });
 
     const token = jwt.sign(request.body, 'shhhhh');
@@ -27,9 +38,8 @@ router.post('/token',async (request,response) => {
     if (!user){
         const newUser = {
             email: request.body.email,
-            // solde / wordBalance
             lastUsedDate: new Date(),
-            rate: maxWords
+            wordBalance: maxWords
         }
         await dbAPI.addUser(newUser);
     }
@@ -38,7 +48,7 @@ router.post('/token',async (request,response) => {
 });
 
 // request token giving specific email
-router.post('/justify', bodyParser.text(), async (request,response) => {
+router.post('/justify', bodyParser.text({ limit: '50mb' }), async (request,response) => {
     try{
         const decodedToken = decodeToken(request.headers.authorization)
         if(!decodedToken) return response.status(400).send({ message: 'Token is empty' });
@@ -49,19 +59,12 @@ router.post('/justify', bodyParser.text(), async (request,response) => {
         
         // token is valid
         const remainingWords = countRemainingWords(user, maxWords)
-        const { justifiedText, numberOfWords} = JustifyText(request.body, maxWidth, remainingWords)
-        if(!justifiedText) return response.status(401).send({ message: 'Payment required' });
+        const { justifiedText, numberOfWords } = JustifyText(request.body, maxWidth, remainingWords)
+        if(!justifiedText) return response.status(402).send({ message: 'Payment required' });
         
-        await dbAPI.updateRate(user, remainingWords - numberOfWords)
+        await dbAPI.updateWordBalance(user, remainingWords - numberOfWords)
         response.end(justifiedText);
     }catch(error){
         response.end(error.message)
     }
 });
-
-// add router in the Express app.
-app.use("/api", router);
-
-app.listen(port, () => {
-    console.log("Server listening")
-})
