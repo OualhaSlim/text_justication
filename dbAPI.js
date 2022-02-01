@@ -1,5 +1,6 @@
 const axios = require('axios');
-const jsonServerUrl = 'http://localhost:3001'
+require('dotenv').config();
+const jsonServerUrl = `http://${process.env.HOST}:${process.env.DB_PORT}`
 
 
 const findUser = async (email) =>{
@@ -37,5 +38,5 @@ const updateWordBalance = (user, wordBalance) =>{
 }
 
 
-module.exports = { addUser, findUser, updateWordBalance }
+module.exports = { addUser, findUser, updateWordBalance}
 

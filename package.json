@@ -4,7 +4,7 @@
   "description": "api text justification",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "db": "json-server --watch db/db.json --port 3001",
     "nodemon": "nodemon ./index.js",
     "start": "concurrently \"node ./index.js\" \"json-server --watch db/db.json --port 3001\""
@@ -15,6 +15,7 @@
     "axios": "^0.25.0",
     "body-parser": "^1.19.1",
     "concurrently": "^7.0.0",
+    "dotenv": "^15.0.0",
     "express": "^4.17.2",
     "json-server": "^0.17.0",
     "jsonwebtoken": "^8.5.1",
@@ -24,6 +25,8 @@
     "node": "14.16"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "jest": "^27.4.7",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   }
 }

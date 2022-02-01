@@ -7,22 +7,10 @@
       "id": 1
     },
     {
-      "email": "slim@email.com",
-      "lastUsedDate": "2022-01-31T11:00:50.967Z",
-      "wordBalance": 50913,
+      "email": "nameForTesting@emailForTesting.ourApp",
+      "lastUsedDate": "2022-02-01T09:44:48.291Z",
+      "wordBalance": 79993,
       "id": 2
-    },
-    {
-      "email": "slim2@email.com",
-      "lastUsedDate": "2022-01-31T10:12:49.487Z",
-      "wordBalance": 80000,
-      "id": 3
-    },
-    {
-      "email": "a@a.com",
-      "lastUsedDate": "2022-01-31T10:53:40.034Z",
-      "wordBalance": 80000,
-      "id": 4
     }
   ]
 }
